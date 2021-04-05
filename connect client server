@@ -15,7 +15,7 @@ cd ansible - перешли в папку
 ansible -i hosts.txt all -m ping - запучкаем команду пинг (коннект делаем)
 
 sudo ufw allow 22 - на хосте нужно прокинуть порт 22 
-
+  
 
 +---------------sudo nano /etc/ansible/ansiblecfg----------------------+
 | host_key_cheking = false - чтобы постоянно не требовало фингр принт  |
