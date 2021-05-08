@@ -1,0 +1,37 @@
++-------------------------------------------------14--Ansible - Шаблоны - Jinja Template---------------------------------------------------+
+
+linux1  ansible_host=192.168.255.212  ansible_user=nikita  ansible_ssh_pass=123qwe123  owner=Petya  <-- добавили owner для того чтобы рапичатался на страничке чей это сервер
+
+
++--------как сгенерировать наш файл j2----------+
+cd имя_диретории -> выбираем какой файл будет j2
+mv index.html index.j2 - переименовали файл
+
+
+
++-----sudo nano index.j2 - редактируем файл-----+ 
+<font color="gold">Owner of this Server is: {{ owner }}  <---- вывести owner сервера
+Server Host Name : {{ ansible_hostname }} <---- выводим переменную которую нам надо (вместто ansible_hostname может быть любая переменная из ansible all -m setup)
+Serve Os Family is: {{ ansible_os_family }}<br>
+
+
+
+
++---открываем наш playbook6.yml----добавляем туда---+
+- name: Generate INDEX.HTML file
+  template: src={{ source_folder }}/index.j2 dest={{ destin_folder }}/index.html mode=0555
+
+чем template отличается от copy - copy просто копирует, а template проверяет если есть переменные то он их заменяет
+
+
+
+
+
++------------------------------------------БЛОК------------------------------------------+
+- name: Generate INDEX.HTML file
+  template: src={{ source_folder }}/index.j2 dest={{ destin_folder }}/index.html mode=0555
+  notify:
+     - Restart Apache2 RedHat
+     - Restart Apache2 Debian
+
+
