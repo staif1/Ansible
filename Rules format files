@@ -1,0 +1,50 @@
+---  <--все yml файлы начинаются 
+
+...  <--заканчиваются 
+
+ - comand1 - все команды должны начинатся с пробела и тире
+ - comand2
+
+ 
+пример:
+ fruits:
+    - apple
+    - orange
+    - mango
+
+
+
+если хотим сделать списко:
+ - fruits:
+     - apple
+     - orange
+     - mango
+
+ - vegetables:
+     - carrots
+     - cocumbers
+
+
+
+
+
+пример:
+ - vasya:
+      nick: vasek
+      position: developer
+      skils:
+        - python
+        - perl
+        - php
+
+
+ - petya:
+       nick: pet
+       position: manager
+       skils:
+         - manage
+         - make_noise
+
+
+
+ - kolya: { nikc: kolyan, position: administrator, skills: network }   <--- запись в строчку 
