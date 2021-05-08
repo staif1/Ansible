@@ -1,0 +1,38 @@
++------------------------------------ЗАПУСК AD-HOC КОММАНД-----------------------------+
+
+весь наши invetory нужно прописывать по пути /etc/ansible/hosts
+
++-----------------------------команды---------------------+
+ansible all -m ping - проверит коннект со ввеми серверами 
+
+ansible all -m setup - выведет всю инфу об серверах 
+
+ansible имя_группы -m setup - выведет инфу об одном серевере/группе серверов
+
+ansible all -m shell -a "имя_команды" - запуск команды на удаленных хостах
+
+
+ansible all -m copy -a "src=privet.txt dest=/home/nikita mode=777" 
+                  src=c текущая директория dest=полодить в папку по пути mode=привилегии
+
+
+ansible all -m file -a "path=/home/nikita/privet.txt state=absent - удалить файл по пути (-m file)
+
+ansible all -m get_url -a "url=https://images.app.goo.gl/zakpL2hACcXbmMWL7 dest=/home/nikita" - скачать что-то из интерета на все сервера 
+
+ansible all -m apt -a "name=vim state=latest" -e ansible_sudo_pass=123qwe123 - установка программы
+
+ansible all -m apt -a "name=vim state=absent" -e ansible_sudo_pass=123qwe123 - удаление программы 
+
+ansible all -m apt -a "name=apache2 state=present" -e ansible_sudo_pass=123qwe123 - установка apache2
+
+ansible all -m service -a "name=apache2 state=started enabled=yes" -e ansible_sudo_pass=123qwe123 - запустить сервер apache2 и добавить в автозагрузку
+
+ansible all -m apt -a "name=apache2 state=absent" -e ansible_sudo_pass=123qwe123 - удалить Apache2
+
+ansible all -m uri -a "url=http://имя_сайта" - получить url 
+
+ansible all -m uri -a "url=http://dspace.gpntbsib.ru return_content=yes" - чтобы увидеть контент
+
+ansible all -m shell -a "ls /var" -vvv -e ansible_sudo_pass=123qwe123 - посмотерть подробный вывод (debug)
+
