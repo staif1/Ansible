@@ -1,0 +1,24 @@
++---------------------------------Ansible - Простейший Playbook------------------------------+
+
+---
+ - name: Test Connection to my servers    <-- название 
+   host: all                              <-- все сервера
+   become: yes                            <-- админ
+
+   tasks:                                
+
+   - name: ping my servers                <-- название 
+     ping:                                <-- сама команда
+
+
+
+ansible-playbook имя_файла.yml - зауск playbook
+
+
+чтобы убрать ввод пароль надо
++----sudo nano /etc/sudores---добвить строчку----+
+| %sudo ALL=(ALL:ALL) NOPASSWD: ALL              |
++------------------------------------------------+
+
+
+
